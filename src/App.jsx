@@ -1,18 +1,20 @@
 import { useState } from "react";
 
 export default function App() {
-  const [value, setValue] = useState(0);
+  const [result, setResult] = useState(0);
+  const [amount, setAmount] = useState("");
 
-  const plusBtn = () => {
-    setValue((prev) => prev + 5);
+  const handlePlus = () => {
+    // input값은 string 이기 때문에 형변환 필요
+    setResult((prev) => prev + Number(amount));
   };
 
-  const minusBtn = () => {
-    setValue((prev) => prev - 5);
+  const handleMinus = () => {
+    setResult((prev) => prev - Number(amount));
   };
 
-  const resetBtn = () => {
-    setValue(0);
+  const handleReset = () => {
+    setResult(0);
   };
 
   return (
@@ -20,19 +22,19 @@ export default function App() {
       <h1>덧셈과 뺄셈이 가능한 앱 만들기</h1>
       <div>
         <input
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => setAmount(e.target.value)}
           type="number"
-          value={value}
+          value={amount}
         />
         만큼을
-        <button onClick={plusBtn}>더할게요</button>
-        <button onClick={minusBtn}>뺄게요</button>
-        <button onClick={resetBtn}>초기화</button>
+        <button onClick={handlePlus}>더할게요</button>
+        <button onClick={handleMinus}>뺄게요</button>
+        <button onClick={handleReset}>초기화</button>
       </div>
       <hr />
       <div>
         <h3>결과</h3>
-        <p>{0 + value}</p>
+        <p>{result}</p>
       </div>
     </div>
   );
