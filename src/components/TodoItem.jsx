@@ -3,13 +3,15 @@ export default function TodoItem({ todo, setTodos }) {
 
   const deleteBtn = () => {
     setTodos((prev) => {
-      prev.filter((todo) => id !== todo.id);
+      return prev.filter((todo) => id !== todo.id);
     });
   };
 
   const toggleBtn = () => {
     setTodos((prev) => {
-      prev.map((todo) => (id === todo.id ? { isDone: !todo.isDone } : todo));
+      return prev.map((todo) =>
+        id === todo.id ? { ...todo, isDone: !todo.isDone } : todo
+      );
     });
   };
 

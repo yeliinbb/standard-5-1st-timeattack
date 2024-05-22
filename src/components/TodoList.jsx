@@ -6,7 +6,7 @@ export default function TodoList({ title, todos, setTodos }) {
       <h2>{title}</h2>
       <ul>
         {todos.map((todo) => {
-          <TodoItem key={todo.id} todo={todo} setTodos={setTodos} />;
+          return <TodoItem key={todo.id} todo={todo} setTodos={setTodos} />;
         })}
       </ul>
     </section>
